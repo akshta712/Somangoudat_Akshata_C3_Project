@@ -3,6 +3,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -79,4 +81,14 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    @Test
+	public void calculate_total_order_value() {
+    	List<Item> menu = new ArrayList<Item>();
+    	Item newItem1 = new Item("Idli",30);
+    	Item newItem2 = new Item("Dosa",50);
+    	menu.add(newItem1);
+    	menu.add(newItem2);
+    	assertEquals(80, service.calculateOrderPrice(menu));
+	}
 }
